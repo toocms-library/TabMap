@@ -54,15 +54,14 @@ public class TooCMSPoiApi {
      * @param radius        搜索半径
      * @param keyword       搜索关键词，和搜索类型必传一个
      * @param poiSearchType 搜索类型，{@link TabMapApi#DEFAULT_POI_TYPE}为所有类型/null为不指定，和关键词必传一个
-     * @param city          城市编码/名称
      * @param p             页数
      * @param pageSize      每页加载条数
      * @param listener      结果回调监听
      */
-    public void doSearchPoi(double latitude, double longitude, int radius, String keyword, String poiSearchType, String city, int p, int pageSize, PoiSearch.OnPoiSearchListener listener) {
+    public void doSearchPoi(double latitude, double longitude, int radius, String keyword, String poiSearchType, int p, int pageSize, PoiSearch.OnPoiSearchListener listener) {
         LatLonPoint point = new LatLonPoint(latitude, longitude);
         PoiSearch.SearchBound searchBound = new PoiSearch.SearchBound(point, radius, true);
-        doSearchPoi(searchBound, keyword, poiSearchType, city, p, pageSize, listener);
+        doSearchPoi(searchBound, keyword, poiSearchType, null, p, pageSize, listener);
     }
 
     /**

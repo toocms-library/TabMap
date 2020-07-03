@@ -123,7 +123,6 @@ public class ObtainNearPoiAty extends ChoosingBaseAty implements View.OnClickLis
                 1000,
                 null,
                 TabMapApi.DEFAULT_POI_TYPE,
-                null,
                 1,
                 40,
                 new PoiSearch.OnPoiSearchListener() {
