@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion configs.compileSdkVersion
+    buildToolsVersion configs.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion configs.minSdkVersion
+        targetSdkVersion configs.targetSdkVersion
+        versionCode configs.versionCode
+        versionName configs.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:${configs.version_appcompat}"
+    implementation "androidx.recyclerview:recyclerview:${configs.version_recyclerview}"
+    implementation "com.github.toocms-library:Tab:${configs.version_tab}"
+    implementation "com.amap.api:3dmap:${configs.version_3dmap}"
+    implementation "com.amap.api:search:${configs.version_search}"
+    implementation "com.amap.api:location:${configs.version_location}"
+}

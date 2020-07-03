@@ -1,0 +1,18 @@
+ext {
+    configs = [
+            compileSdkVersion   : 29,
+            buildToolsVersion   : "29.0.2",
+            minSdkVersion       : 19,
+            targetSdkVersion    : 29,
+            versionCode         : 20200703,
+            versionName         : "1.0.0.200703-alpha",
+
+            //open version control
+            version_appcompat   : "1.1.0",
+            version_recyclerview: "1.1.0",
+            version_tab         : "5.1.2",
+            version_3dmap       : "7.5.0",
+            version_search      : "7.3.0",
+            version_location    : "5.0.0"
+    ]
+}

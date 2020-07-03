@@ -1,0 +1,2 @@
+include ':Map'
+rootProject.name = "TabMap"
