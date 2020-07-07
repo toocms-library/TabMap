@@ -4,7 +4,7 @@
 
 # TabMap框架集成文档
 
-[![](https://jitpack.io/v/toocms-library/TabMap.svg)](https://jitpack.io/#toocms-library/Tab)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;[![Tab Update](https://img.shields.io/badge/更新-记录-4BC51D.svg)](https://github.com/toocms-library/TabMap/releases)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
+[![Jitpack](https://jitpack.io/v/toocms-library/TabMap.svg)](https://jitpack.io/#toocms-library/TabMap)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;[![TabMap Update](https://img.shields.io/badge/更新-记录-4BC51D.svg)](https://github.com/toocms-library/TabMap/releases)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
 
 ## 添加Gradle依赖
 - 在模块目录下的build.gradle文件的dependencies添加
@@ -56,10 +56,16 @@ TabMapApi.getLocationApi(this)
 TabMapApi.getLocationApi(this).stop();
 ```
 
-- 释放内存
+- 添加释放代码（必须，否则会造成第二次定位没有反应）
 
 ```
-TabMapApi.getLocationApi(this).release();
+@Override
+protected void onDestroy() {
+  super.onDestroy();
+  // 二选一
+  TabMapApi.getLocationApi(this).release();
+  // TabMapApi.release(this);
+}
 ```
 
 ## POI
@@ -108,6 +114,18 @@ TabMapApi.getPoiApi(this)
           public void onPoiItemSearched(PoiItem poiItem, int i) {
           }
         });
+```
+
+- 添加释放代码（必须，否则会造成第二次查询没有反应）
+
+```
+@Override
+protected void onDestroy() {
+  super.onDestroy();
+  // 二选一
+  TabMapApi.getPoiApi(this).release();
+  // TabMapApi.release(this);
+}
 ```
 
 ## 启动地址选择页面
@@ -166,4 +184,16 @@ TabMapApi.getChoosingApi(this)
           showToast("取消选择");
        }
     });
+```
+
+- 添加释放代码（非必须，理论上可能会造成第二次启动没有反应，但实测没有发生）
+
+```
+@Override
+protected void onDestroy() {
+  super.onDestroy();
+  // 二选一
+  TabMapApi.getChoosingApi(this).release();
+  // TabMapApi.release(this);
+}
 ```
