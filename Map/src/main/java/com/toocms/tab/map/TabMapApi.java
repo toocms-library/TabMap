@@ -51,4 +51,15 @@ public final class TabMapApi {
     public static TooCMSChoosingApi getChoosingApi(Context context) {
         return TooCMSChoosingApi.getInstance(context);
     }
+
+    /**
+     * 释放
+     *
+     * @param context
+     */
+    public static void release(Context context) {
+        getLocationApi(context).release();
+        getPoiApi(context).release();
+        getChoosingApi(context).release();
+    }
 }

@@ -89,4 +89,11 @@ public class TooCMSPoiApi {
         if (searchBound != null) search.setBound(searchBound);
         search.searchPOIAsyn();
     }
+
+    /**
+     * 释放
+     */
+    public void release() {
+        instance = null;
+    }
 }

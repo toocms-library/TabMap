@@ -84,4 +84,11 @@ public class TooCMSChoosingApi {
             context.startActivity(intent);
         }
     }
+
+    /**
+     * 释放
+     */
+    public void release() {
+        instance = null;
+    }
 }
