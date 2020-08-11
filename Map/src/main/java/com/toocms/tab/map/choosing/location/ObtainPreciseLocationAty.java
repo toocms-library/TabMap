@@ -2,6 +2,7 @@ package com.toocms.tab.map.choosing.location;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ import com.toocms.tab.map.R;
 import com.toocms.tab.map.choosing.base.ChoosingBaseAty;
 import com.toocms.tab.map.choosing.config.ChoosingConfig;
 import com.toocms.tab.toolkit.ListUtils;
+import com.toocms.tab.toolkit.LogUtil;
 import com.toocms.tab.toolkit.permission.PermissionFail;
 import com.toocms.tab.toolkit.permission.PermissionSuccess;
 
@@ -87,18 +89,23 @@ public class ObtainPreciseLocationAty extends ChoosingBaseAty implements View.On
                     // 若有poi返回则显示poi名称和地址，否则返回乡镇名称和地址
                     List<PoiItem> poiItems = regeocodeAddress.getPois();    // poi
                     String township = regeocodeAddress.getTownship();   // 乡镇名称
+                    String province = regeocodeAddress.getProvince();
+                    String city = regeocodeAddress.getCity();
+                    String district = regeocodeAddress.getDistrict();
+                    String provinceCode = "";
+                    String cityCode = regeocodeAddress.getCityCode();
+                    String districtCode = regeocodeAddress.getAdCode();
 
                     if (!ListUtils.isEmpty(poiItems)) {
-                        name = poiItems.get(0).getTitle();
-                        address = poiItems.get(0).getSnippet();
+                        PoiItem poiItem = poiItems.get(0);
+                        name = poiItem.getTitle();
+                        address = poiItem.getSnippet();
                     } else if (!TextUtils.isEmpty(township)) {
                         name = township;
-                        String province = regeocodeAddress.getProvince();
-                        String city = regeocodeAddress.getCity();
                         if (TextUtils.equals(province, city)) {
-                            address = city + regeocodeAddress.getDistrict() + regeocodeAddress.getTownship();
+                            address = city + district + township;
                         } else {
-                            address = province + city + regeocodeAddress.getDistrict() + regeocodeAddress.getTownship();
+                            address = province + city + district + township;
                         }
                     } else {
                         name = regeocodeAddress.getFormatAddress();
@@ -112,7 +119,17 @@ public class ObtainPreciseLocationAty extends ChoosingBaseAty implements View.On
                     } else {
                         tvAddress.setVisibility(View.VISIBLE);
                     }
-
+                    // 回调赋值
+                    result.setName(name);
+                    result.setAddress(address);
+                    result.setProvince(province);
+                    result.setProvinceCode(provinceCode);
+                    result.setCity(city);
+                    result.setCityCode(cityCode);
+                    result.setDistrict(district);
+                    result.setDistrictCode(districtCode);
+                    Log.e("result", result.toString());
+                    // 控件赋值
                     tvName.setText(name);
                     tvAddress.setText(address);
                 }
@@ -152,8 +169,6 @@ public class ObtainPreciseLocationAty extends ChoosingBaseAty implements View.On
     @Override
     public void onClick(View v) {
         if (ChoosingConfig.locationResultListener != null) {
-            result.setName(tvName.getText().toString());
-            result.setAddress(tvAddress.getText().toString());
             ChoosingConfig.locationResultListener.onLocationResult(result);
         }
         finish();
