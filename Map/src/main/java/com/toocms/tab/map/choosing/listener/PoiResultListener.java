@@ -1,6 +1,6 @@
 package com.toocms.tab.map.choosing.listener;
 
-import com.toocms.tab.map.choosing.poi.PoiResult;
+import com.amap.api.services.core.PoiItem;
 
 /**
  * poi选择结果监听
@@ -16,9 +16,9 @@ public interface PoiResultListener {
     /**
      * 当有返回结果
      *
-     * @param result
+     * @param poiItem
      */
-    void onPoiResult(PoiResult result);
+    void onPoiResult(PoiItem poiItem);
 
     /**
      * 当取消选点
