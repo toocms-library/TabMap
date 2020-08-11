@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.toocms.tab.map.R;
 import com.toocms.tab.map.choosing.config.ChoosingConfig;
@@ -69,9 +68,7 @@ public class PoiListAdapter extends RecyclerView.Adapter<PoiListAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 if (ChoosingConfig.poiResultListener != null) {
-                    LatLonPoint point = poiItem.getLatLonPoint();
-                    PoiResult result = new PoiResult(poiItem.getTitle(), poiItem.getSnippet(), String.valueOf(point.getLatitude()), String.valueOf(point.getLongitude()));
-                    ChoosingConfig.poiResultListener.onPoiResult(result);
+                    ChoosingConfig.poiResultListener.onPoiResult(poiItem);
                 }
                 activity.setResult(Activity.RESULT_OK);
                 activity.finish();
