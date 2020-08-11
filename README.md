@@ -11,7 +11,7 @@
 
 ```
 dependencies {
-    implementation 'com.github.toocms-library:TabMap:1.0.0.200707-beta'
+    implementation 'com.github.toocms-library:TabMap:1.0.1'
     implementation 'com.amap.api:3dmap:7.5.0'       // 地图，可选，如依赖必须同时依赖搜索和定位
     implementation 'com.amap.api:search:7.3.0'      // 搜索，可选，须与地图并存
     implementation 'com.amap.api:location:5.0.0'    // 定位，可单选，无地图需求时可单独依赖定位包
