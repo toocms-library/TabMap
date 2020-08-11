@@ -15,15 +15,14 @@ public class LocationResult {
     private String address;
     private String latitude;
     private String longitude;
+    private String province;
+    private String provinceCode;
+    private String city;
+    private String cityCode;
+    private String district;
+    private String districtCode;
 
     public LocationResult() {
-    }
-
-    public LocationResult(String name, String address, String latitude, String longitude) {
-        this.name = name;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
     }
 
     public String getName() {
@@ -58,6 +57,54 @@ public class LocationResult {
         this.longitude = longitude;
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getProvinceCode() {
+        return provinceCode;
+    }
+
+    void setProvinceCode(String provinceCode) {
+        this.provinceCode = provinceCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCityCode() {
+        return cityCode;
+    }
+
+    void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public String getDistrictCode() {
+        return districtCode;
+    }
+
+    void setDistrictCode(String districtCode) {
+        this.districtCode = districtCode;
+    }
+
     @Override
     public String toString() {
         return "LocationResult{" +
@@ -65,6 +112,12 @@ public class LocationResult {
                 ", address='" + address + '\'' +
                 ", latitude='" + latitude + '\'' +
                 ", longitude='" + longitude + '\'' +
+                ", province='" + province + '\'' +
+                ", provinceCode='" + provinceCode + '\'' +
+                ", city='" + city + '\'' +
+                ", cityCode='" + cityCode + '\'' +
+                ", district='" + district + '\'' +
+                ", districtCode='" + districtCode + '\'' +
                 '}';
     }
 }
