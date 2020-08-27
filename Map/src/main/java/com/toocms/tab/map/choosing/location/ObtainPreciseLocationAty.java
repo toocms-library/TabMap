@@ -2,7 +2,6 @@ package com.toocms.tab.map.choosing.location;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -22,7 +21,6 @@ import com.toocms.tab.map.R;
 import com.toocms.tab.map.choosing.base.ChoosingBaseAty;
 import com.toocms.tab.map.choosing.config.ChoosingConfig;
 import com.toocms.tab.toolkit.ListUtils;
-import com.toocms.tab.toolkit.LogUtil;
 import com.toocms.tab.toolkit.permission.PermissionFail;
 import com.toocms.tab.toolkit.permission.PermissionSuccess;
 
@@ -128,7 +126,6 @@ public class ObtainPreciseLocationAty extends ChoosingBaseAty implements View.On
                     result.setCityCode(cityCode);
                     result.setDistrict(district);
                     result.setDistrictCode(districtCode);
-                    Log.e("result", result.toString());
                     // 控件赋值
                     tvName.setText(name);
                     tvAddress.setText(address);
