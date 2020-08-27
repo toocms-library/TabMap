@@ -30,8 +30,7 @@ public class TooCMSLocationApi {
      */
     private final AMapLocationClientOption DEFAULT_OPTION = new AMapLocationClientOption()
             .setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy)  // 高精度模式
-            .setGpsFirst(false)
-            .setOnceLocation(true)  // 获取一次定位结果
+            .setOnceLocation(true)    // 获取一次定位结果
             .setNeedAddress(true);  // 返回地址信息
 
     private AMapLocationClient client;
@@ -135,7 +134,6 @@ public class TooCMSLocationApi {
     public void stop() {
         if (client != null) client.stopLocation();
     }
-
 
     /**
      * 释放
