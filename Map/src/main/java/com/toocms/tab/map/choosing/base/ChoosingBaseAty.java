@@ -70,7 +70,7 @@ public abstract class ChoosingBaseAty extends BaseActivity {
         aMap.setLocationSource(new LocationSource() {
             @Override
             public void activate(OnLocationChangedListener onLocationChangedListener) {
-                requestPermissions(PERMISSON_REQUESTCODE, Manifest.permission.ACCESS_COARSE_LOCATION);
+                requestPermissions();
             }
 
             @Override
@@ -194,7 +194,11 @@ public abstract class ChoosingBaseAty extends BaseActivity {
         if (!LocationUtils.isLocationEnabled(this))
             LocationUtils.toOpenGPS(this);
         else {
-            requestPermissions(PERMISSON_REQUESTCODE, Manifest.permission.ACCESS_COARSE_LOCATION);
+            requestPermissions();
         }
+    }
+
+    private void requestPermissions() {
+        requestPermissions(PERMISSON_REQUESTCODE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION);
     }
 }
